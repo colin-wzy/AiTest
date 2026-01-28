@@ -1,13 +1,11 @@
-package com.example.aitest;
+package com.deepseek;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AiTestApplication {
-
+public class DeepSeekApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AiTestApplication.class, args);
+        SpringApplication.run(DeepSeekApplication.class, args);
     }
-
 }
