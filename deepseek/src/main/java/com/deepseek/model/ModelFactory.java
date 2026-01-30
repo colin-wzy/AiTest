@@ -38,8 +38,8 @@ public class ModelFactory {
         return ChatClient.builder(chatModel)
                 .defaultOptions(ChatOptions.builder().temperature(0.1).build()) // 精确度
                 .defaultAdvisors(PromptChatMemoryAdvisor.builder(chatMemory).build(), // 上下文记忆
-                        new SimpleLoggerAdvisor(), // 日志
-                        new SafeGuardAdvisor(List.of("死")))  // 敏感词
+//                        new SafeGuardAdvisor(List.of("死")), // 敏感词
+                        new SimpleLoggerAdvisor() )  // 日志
                 .defaultToolCallbacks(toolCallbackProvider) // 接入外部MCP
                 .build();
     }

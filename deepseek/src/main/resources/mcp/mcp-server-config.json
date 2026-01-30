@@ -6,6 +6,13 @@
       "env": {
         "BAIDU_MAPS_API_KEY": "1EMgekCYpgaFCfjLDqn9GL73cgAhZsXs"
       }
+    },
+    "time": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-time",
+        "--local-timezone=America/New_York"
+      ]
     }
   }
 }
