@@ -6,11 +6,10 @@ import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.ChatMemoryRepository;
-import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.deepseek.DeepSeekChatModel;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,12 +32,15 @@ public class ModelFactory {
 //    }
 
     @Bean("deepSeekChatClient")
-    public ChatClient deepSeekChatClient(DeepSeekChatModel chatModel, ChatMemory chatMemory) {
+    public ChatClient deepSeekChatClient(DeepSeekChatModel chatModel,
+                                         ChatMemory chatMemory,
+                                         ToolCallbackProvider toolCallbackProvider) {
         return ChatClient.builder(chatModel)
                 .defaultOptions(ChatOptions.builder().temperature(0.1).build()) // 精确度
                 .defaultAdvisors(PromptChatMemoryAdvisor.builder(chatMemory).build(), // 上下文记忆
                         new SimpleLoggerAdvisor(), // 日志
                         new SafeGuardAdvisor(List.of("死")))  // 敏感词
+                .defaultToolCallbacks(toolCallbackProvider) // 接入外部MCP
                 .build();
     }
 }

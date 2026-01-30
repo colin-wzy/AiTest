@@ -80,4 +80,17 @@ public class AiController {
                 .user(message)
                 .call().content();
     }
+
+    /**
+     * MCP应用，已在{@link com.deepseek.model.ModelFactory#deepSeekChatClient}中统一配置
+     *
+     * @param message 输入
+     * @return 输出对象
+     */
+    @GetMapping(value = "/mcp")
+    public String mcp(String message) {
+        return deepSeekChatClient.prompt()
+                .user(message)
+                .call().content();
+    }
 }
