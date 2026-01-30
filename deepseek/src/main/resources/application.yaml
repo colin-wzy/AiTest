@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: deepseek
+  ai:
+    deepseek:
+      api-key: ${DEEP_SEEK_KEY}
+      chat:
+        options:
+          model: deepseek-chat
+#          model: deepseek-reasoner
+    mcp:
+      client:
+        request-timeout: 60s
+        stdio:
+          servers-configuration: classpath:/mcp/mcp-server-config.json
+
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      # 解决流响应乱码
+      charset: UTF-8
+      enabled: true
+      force: true
+
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug
+    io.modelcontextprotocol.spec: debug
+
