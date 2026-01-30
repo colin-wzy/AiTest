@@ -56,7 +56,7 @@ public class AiController {
     }
 
     /**
-     * tool应用（目前不生效，原因未知）
+     * tool应用
      *
      * @param message 输入
      * @return 输出对象
@@ -70,7 +70,7 @@ public class AiController {
     }
 
     /**
-     * toolCallbacks应用（目前不生效，原因未知）
+     * toolCallbacks应用
      *
      * @param message 输入
      * @return 输出对象
